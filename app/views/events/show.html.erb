@@ -1,0 +1,4 @@
+<h1>Event: <%= @event.title %> </h1>
+<strong>Location: </strong><%= @event.location %><br />
+<strong>Date: </strong><%= @event.date %><br />
+<%= link_to 'Go back', user_path(@event.creator.id)  %>
