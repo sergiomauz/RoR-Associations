@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -20,7 +19,6 @@ class UsersController < ApplicationController
     @upcoming_events = @user.upcoming_events
     @prev_events = @user.prev_events
   end
-
 
   def attend
     event = Event.find(params[:id])

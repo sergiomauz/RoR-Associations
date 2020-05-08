@@ -6,7 +6,7 @@
   <p> No attendees available </p>
 <% end %>
 
-<% if current_user && !is_attended?(@event.id) %>
+<% if current_user && !attended?(@event.id) %>
   <%= link_to 'Attend to this event', attend_path(@event.id) %>
 <% end %>
 

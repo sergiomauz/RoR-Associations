@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  helper_method :is_attended?
+  helper_method :attended?
 
-
-  def is_attended?(event_id)
+  def attended?(event_id)
     return true if current_user.attended_events.where(id: event_id)[0]
 
     false
