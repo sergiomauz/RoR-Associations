@@ -5,6 +5,11 @@
 <% if @event.attendees.empty? %>
   <p> No attendees available </p>
 <% end %>
+
+<% if current_user && !is_attended?(@event.id) %>
+  <%= link_to 'Attend to this event', attend_path(@event.id) %>
+<% end %>
+
 <ul>
   <% @event.attendees.each do |a| %>
     <li><%= link_to a.name, user_path(a.id) %></li>

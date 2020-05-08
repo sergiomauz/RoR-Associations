@@ -17,12 +17,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @upcoming_events = @user.upcoming_events
+    @prev_events = @user.prev_events
+  end
+
+
+  def attend
+    event = Event.find(params[:id])
+    current_user.attended_events << event
+    redirect_to event_path(params[:id])
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :username)
   end
-
 end

@@ -20,13 +20,25 @@
 </p>
 
 
-<p><h2>Attended Events</h2></p>
+<h2>Attended Events</h2>
+
 <% if @user.attended_events.empty? %>
   <p> No events available </p>
 <% end %>
-<% @user.attended_events.each do |attended_event|  %>
+
+<h3>Upcoming</h3>
+<% @upcoming_events.each do |attended_event|  %>
   <p>
     <strong>Event:</strong> <%= attended_event.title %><br />
     <%= link_to 'Show', event_path(attended_event.id)  %>
   </p>  
 <% end %>
+
+<h3>Previous</h3>
+<% @prev_events.each do |attended_event|  %>
+  <p>
+    <strong>Event:</strong> <%= attended_event.title %><br />
+    <%= link_to 'Show', event_path(attended_event.id)  %>
+  </p>  
+<% end %>
+
