@@ -1,3 +1,12 @@
 <h1>Event: <%= @event.title %> </h1>
 <strong>Location: </strong><%= @event.location %><br />
 <strong>Date: </strong><%= @event.date %><br />
+<h3>Attendees</h3>
+<% if @event.attendees.empty? %>
+  <p> No attendees available </p>
+<% end %>
+<ul>
+  <% @event.attendees.each do |a| %>
+    <li><%= link_to a.name, user_path(a.id) %></li>
+  <% end %>
+</ul>
