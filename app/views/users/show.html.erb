@@ -3,12 +3,15 @@
 <p><strong>Name: </strong><%= @user.name %></p>
 <p><strong>Username: </strong> <%= @user.username %></p>
 <p><h2>Events</h2></p>
-<p>
-  <%= link_to 'Create event', new_event_path  %>
-</p>
 <% @created_events.each do |created_event|  %>
   <p>
     <strong>Event:</strong> <%= created_event.title %><br />
     <%= link_to 'Show', event_path(created_event.id)  %>
   </p>  
 <% end %>
+
+<p>
+  <% if current_user && current_user.id == @user.id %>
+    <%= link_to 'Create event', new_event_path  %>
+  <% end %>
+</p>
