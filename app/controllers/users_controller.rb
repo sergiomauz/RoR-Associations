@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'User Created'
       redirect_to new_session_path
     else
-      flash[:error] = 'Failed to create user'
+      flash.now[:alert] = 'Failed to create user'
       render 'new'
     end
   end
