@@ -7,6 +7,8 @@ class User < ApplicationRecord
     attended_events.where('date > ?', Time.now)
   end
 
+  validates :username, uniqueness: true
+
   has_many :created_events, foreign_key: 'creator_id', class_name: 'Event'
 
   has_many :attendances, foreign_key: 'attendee_id', class_name: 'Attendance'
