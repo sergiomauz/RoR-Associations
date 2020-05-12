@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User", type: :feature do
+RSpec.describe 'User', type: :feature do
   before(:all) do
     User.create(name: 'Sergio Zambrano', username: 'sergiomauz')
   end
