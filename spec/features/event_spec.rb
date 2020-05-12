@@ -1,3 +1,5 @@
+require_relative '../rails_helper.rb'
+
 RSpec.describe 'Event', type: :feature do
   before(:all) do
     User.create(name: 'Felipe Rosa', username: 'flpfar')
