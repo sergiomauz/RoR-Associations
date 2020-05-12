@@ -1,0 +1,44 @@
+<h1>User profile</h1>
+
+<p><strong>Name: </strong><%= @user.name %></p>
+<p><strong>Username: </strong> <%= @user.username %></p>
+<p><h2>Created Events</h2></p>
+<% if @user.created_events.empty? %>
+  <p> No events available </p>
+<% end %>
+<% @user.created_events.each do |created_event|  %>
+  <p>
+    <strong>Event:</strong> <%= created_event.title %><br />
+    <%= link_to 'Show', event_path(created_event.id)  %>
+  </p>  
+<% end %>
+
+<p>
+  <% if current_user && current_user.id == @user.id %>
+    <%= link_to 'Create event', new_event_path  %>
+  <% end %>
+</p>
+
+
+<h2>Attended Events</h2>
+
+<% if @user.attended_events.empty? %>
+  <p> No events available </p>
+<% end %>
+
+<h3>Upcoming</h3>
+<% @upcoming_events.each do |attended_event|  %>
+  <p>
+    <strong>Event:</strong> <%= attended_event.title %><br />
+    <%= link_to 'Show', event_path(attended_event.id)  %>
+  </p>  
+<% end %>
+
+<h3>Previous</h3>
+<% @prev_events.each do |attended_event|  %>
+  <p>
+    <strong>Event:</strong> <%= attended_event.title %><br />
+    <%= link_to 'Show', event_path(attended_event.id)  %>
+  </p>  
+<% end %>
+

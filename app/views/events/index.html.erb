@@ -1,0 +1,28 @@
+<h1> Events </h1>
+
+<% if @events.empty? %>
+  <p> No events available </p>
+<% end %>
+
+
+<h2>Past</h2>
+<% Event.past.each do |event| %>
+  <p>
+    <%= link_to event.title, event_path(event.id) %>
+    by <%= link_to event.creator.name, user_path(event.creator.id) %>
+  </p>
+<% end %>
+<br/>
+
+<h2>Upcoming</h2>
+<% Event.upcoming.each do |event| %>
+  <p>
+    <%= link_to event.title, event_path(event.id) %>
+    by <%= link_to event.creator.name, user_path(event.creator.id) %>
+  </p>
+<% end %>
+<br/>
+
+<% if current_user %>
+  <%= link_to 'Create event', new_event_path %>
+<% end %>
